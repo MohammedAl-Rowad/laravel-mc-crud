@@ -10,10 +10,10 @@
                 <div class="col-4">
                     <div class="card-body">
                         <h5 class="card-title">
-                            {{ $post->title; }}
+                            {{ $post->title }}
                         </h5>
                         <p class="card-text text-truncate">
-                            {{ $post->body; }}
+                            {{ $post->body }}
                         </p>
                         <a href="{{ route('post-by-id', ['id' => $post->id]) }}" class="btn btn-primary">
                             See details
