@@ -45,7 +45,7 @@ class CookieController extends Controller
     public function add_product_to_cart($id)
     {
         return redirect()->route(
-            'posts-by-id',
+            'post-by-id',
             ['id' => $id, 'added-to-card' => true]
         )->cookie($this->COOKIE_NAME, $this->build_cart_str($id));
     }
@@ -53,7 +53,7 @@ class CookieController extends Controller
     public function remove_product_from_cart($id)
     {
         return redirect()->route(
-            'posts-by-id',
+            'post-by-id',
             ['id' => $id, 'removed-from-card' => true]
         )->cookie($this->COOKIE_NAME, $this->remove_from_cart($id));
     }
