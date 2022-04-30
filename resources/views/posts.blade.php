@@ -4,11 +4,18 @@
 <div class="container mt-4">
         
     <div class="row">
+        @isset($cart_posts)
+            <div class="alert alert-info">
+                Products from cart 🛒
+            </div>
+        @endisset
        @foreach ($posts as $post)
            <div class="col-4">
                <div class="card">
                    <div class="card-body">
-                       <h5 class="card-title"></h5>
+                       <h5 class="card-title">
+                           {{$post->title}}
+                       </h5>
                        <p class="card-text text-truncate">
                            {{ $post->body }}
                        </p>

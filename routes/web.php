@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\CookieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,23 @@ Route::post('/update-post/{id}', function (Request $request) {
     $id = $request->route('id');
     $post = Post::findOrFail($id);
     $post->body = $request->input('body');
+    $post->title = $request->input('title');
     $post->save();
     return redirect()->route('posts-by-id', ['id' => $id]);
 })->name('update-post');
+
+
+Route::get(
+    '/add-to-cart/{id}',
+    [CookieController::class, 'add_product_to_cart']
+)->name('add-to-cart');
+
+Route::get(
+    '/remove-from-cart/{id}',
+    [CookieController::class, 'remove_product_from_cart']
+)->name('remove-from-cart');
+
+Route::get(
+    '/see-cart-products',
+    [CookieController::class, 'see_products_in_cart']
+)->name('see-cart-products');
